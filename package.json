@@ -1,0 +1,18 @@
+{
+  "name": "ocr-p14-dropdown-npm",
+  "version": "1.0.0",
+  "main": "dist/Dropdown.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5"
+  }
+}
