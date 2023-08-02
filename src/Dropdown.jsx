@@ -124,6 +124,16 @@ const Dropdown = ({ dropdownData, onChange, onReset }) => {
     onChange(dropdownSelection);
   }, [dropdownSelection]);
 
+  useEffect(() => {
+    if (onReset) {
+      console.log("useEffect onreset called");
+      setDropdownIsOpen(false);
+      setDropdownSelection(dropdownData[0]);
+      setFilteredDropdownData([...dropdownData]);
+      setDropdownZIndex(0);
+    }
+  }, [onReset]);
+
   const handleOutsideClick = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       toogleDropdown();
