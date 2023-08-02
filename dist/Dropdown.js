@@ -34,7 +34,8 @@ var SearchBar = _styledComponents["default"].input(_templateObject6 || (_templat
 var Dropdown = function Dropdown(_ref) {
   var dropdownData = _ref.dropdownData,
     onChange = _ref.onChange,
-    onReset = _ref.onReset;
+    _ref$onReset = _ref.onReset,
+    onReset = _ref$onReset === void 0 ? false : _ref$onReset;
   Dropdown.propTypes = {
     dropdownData: _propTypes["default"].arrayOf(_propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])).isRequired
   };
@@ -92,6 +93,14 @@ var Dropdown = function Dropdown(_ref) {
   (0, _react.useEffect)(function () {
     onChange(dropdownSelection);
   }, [dropdownSelection]);
+  (0, _react.useEffect)(function () {
+    if (onReset) {
+      setDropdownIsOpen(false);
+      setDropdownSelection(dropdownData[0]);
+      setFilteredDropdownData(_toConsumableArray(dropdownData));
+      setDropdownZIndex(0);
+    }
+  }, [onReset]);
   var handleOutsideClick = function handleOutsideClick(event) {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       toogleDropdown();
@@ -107,13 +116,6 @@ var Dropdown = function Dropdown(_ref) {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [dropdownIsOpen]);
-  (0, _react.useEffect)(function () {
-    console.log("onReset in dropdown");
-    if (onReset) {
-      setDropdownIsOpen(false);
-      setDropdownSelection(dropdownData[0]);
-    }
-  }, [onReset]);
   return /*#__PURE__*/_react["default"].createElement(DropdownWrapper, {
     zIndex: dropdownZIndex,
     className: "dropdownWrapper",

@@ -70,7 +70,7 @@ const SearchBar = styled.input`
   padding: 5px;
 `;
 
-const Dropdown = ({ dropdownData, onChange, onReset }) => {
+const Dropdown = ({ dropdownData, onChange, onReset = false }) => {
   Dropdown.propTypes = {
     dropdownData: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -126,7 +126,6 @@ const Dropdown = ({ dropdownData, onChange, onReset }) => {
 
   useEffect(() => {
     if (onReset) {
-      console.log("useEffect onreset called");
       setDropdownIsOpen(false);
       setDropdownSelection(dropdownData[0]);
       setFilteredDropdownData([...dropdownData]);
@@ -151,14 +150,6 @@ const Dropdown = ({ dropdownData, onChange, onReset }) => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [dropdownIsOpen]);
-
-  useEffect(() => {
-    console.log("onReset in dropdown");
-    if (onReset) {
-      setDropdownIsOpen(false);
-      setDropdownSelection(dropdownData[0]);
-    }
-  }, [onReset]);
 
   return (
     <DropdownWrapper

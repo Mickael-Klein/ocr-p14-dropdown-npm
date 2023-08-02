@@ -1,6 +1,7 @@
 # OCR-P14-DROPDOWN-NPM
 
 The OCR-P14-DROPDOWN-NPM component is a React Dropdown component wich is a custom dropdown list that allows users to select items from a list of choices. It is fully styled using styled-components and supports search functionality to filter displayed items.
+The component handle z-index so you can have multiple dropdowns and opening one will cover the other one.
 
 ## Requirements
 
@@ -26,57 +27,85 @@ To install the React Dropdown component in your project, you can use npm or yarn
 
 Here's how you can use the React Dropdown component in your application:
 
+### Basic Example
+
 ```
 import React, { useState } from "react";
-import Dropdown from "your-path-to-dropdown-component";
+import Dropdown from "ocr-p14-dropdown-npm";
 
-const YourComponent = () => {
-  const [selectedItem, setSelectedItem] = useState("");
+export default const YourComponent = () => {
+    const [selectedItem, setSelectedItem] = useState("");
 
-  const handleChange = (selected) => {
-    setSelectedItem(selected);
-  };
+    const arrOfStrOrNum = ["Option 1", "Option 2", "Option 3", "Option 4"]; // arr of data to pass
 
-  const handleReset = () => {
-    setSelectedItem("");
-  };
-
-  const dropdownData = ["Option 1", "Option 2", "Option 3", "Option 4"];
-
-  return (
-    <div>
-      <h1>Example of using the Dropdown component</h1>
-      <Dropdown
-        dropdownData={dropdownData}
-        onChange={handleChange}
-        onReset={handleReset}
-      />
-      <p>Selected Item: {selectedItem}</p>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Example of using the Dropdown component</h1>
+            <Dropdown
+                dropdownData={arrOfStrOrNum}
+                onChange={(selection) => setSelectedItem(selection)}
+            />
+        </div>
+    );
 };
-
-export default YourComponent;
 ```
 
-Props
+### Example with reset dropdown selection
+
+If for example, the user submit a form and you want to reset the dropdown component to its original state, you can add a state and pass the onReset props to true.
+
+```
+import React, { useState, useEffect } from "react";
+import Dropdown from "ocr-p14-dropdown-npm";
+
+export default const YourComponent = () => {
+    const [selectedItem, setSelectedItem] = useState("");
+    const [onResetState, setOnResetState] = useState(false);
+
+    useEffect(() => {
+        setOnResetState(false);
+    }, [onResetState])
+
+    const arrOfStrOrNum = ["Option 1", "Option 2", "Option 3", "Option 4"];
+
+    return (
+        <div>
+            <h1>Example of using the Dropdown component</h1>
+            <Dropdown
+                dropdownData={arrOfStrOrNum}
+                onChange={(selection) => setSelectedItem(selection)}
+                onReset={onResetState}
+            />
+            <button onClick={() => setOnResetState(true)}>Reset dropdown selection</button>
+        </div>
+    );
+};
+```
+
+### Props
+
 The Dropdown component takes the following props:
 
-dropdownData (array, required): An array of options to display in the dropdown menu. Each element can be a string or a number.
+- dropdownData (array, required): An array of options to display in the dropdown menu. Each element can be a string or a number.
 
-onChange (function, required): A callback function called when the user selects an item in the dropdown. The function receives the text of the selected item as a parameter.
+- onChange (function, required): A callback function called when the user selects an item in the dropdown. The function receives the text of the selected item as a parameter.
 
-onReset (function, optional): A callback function called when you want to reset the dropdown selection. Use this function if you need to reset the user's selection to a default value.
+- onReset (variable/state, optional): A boolean wich when is "true" will reset the user's selection to a default value (the first of the array of data passed).
 
-Styling
+### Styling
+
 The React Dropdown component is fully styled using styled-components. You can customize the styles by adjusting the CSS properties of the styled components inside the component.
 
-Limitations
+### Limitations
+
 The component is not optimized for very large lists of options, as it will render all the elements in the list. For large amounts of data, we recommend using a virtualization library to optimize performance.
-Notes
-Make sure to handle changes to the parent component's state using the onChange and onReset callback functions.
 
-The component does not have any default styling, so make sure to add your own styles to match your application's theme.
+### Notes
 
-License
+Make sure to handle changes to the parent component's state using the onChange.
+
+The component has some default styling, feel free to add your own styles to match your application's theme.
+
+## License
+
 This project is licensed under the MIT License. You are free to use, modify, and distribute it under the terms of the MIT License.
