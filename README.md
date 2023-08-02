@@ -63,7 +63,9 @@ export default const YourComponent = () => {
     const [onResetState, setOnResetState] = useState(false);
 
     useEffect(() => {
-        setOnResetState(false);
+        if(onResetState) {
+            setOnResetState(false);
+        }
     }, [onResetState])
 
     const arrOfStrOrNum = ["Option 1", "Option 2", "Option 3", "Option 4"];
