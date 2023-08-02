@@ -96,11 +96,11 @@ The Dropdown component takes the following props:
 
 ### Styling
 
-The React Dropdown component is fully styled using styled-components. You can customize the styles by adjusting the CSS properties of the styled components inside the component.
+The React Dropdown component is fully styled using styled-components. You can customize the styles by adding your on CSS.
 
 ### Limitations
 
-The component is not optimized for very large lists of options, as it will render all the elements in the list. For large amounts of data, we recommend using a virtualization library to optimize performance.
+The component is not optimized for very large lists of options, as it will render all the elements in the list. Its dropdown menu's height is limited to 25vh. For large amounts of data, we recommend using a virtualization library to optimize performance.
 
 ### Notes
 
