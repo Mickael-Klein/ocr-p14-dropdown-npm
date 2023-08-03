@@ -71,6 +71,10 @@ const SearchBar = styled.input`
   box-sizing: initial;
 `;
 
+const NoDataErrMsg = styled.p`
+  color: white;
+`;
+
 const Dropdown = ({ dropdownData, onChange, onReset = false, name, id }) => {
   Dropdown.propTypes = {
     dropdownData: PropTypes.arrayOf(
@@ -174,21 +178,23 @@ const Dropdown = ({ dropdownData, onChange, onReset = false, name, id }) => {
             placeholder="Search"
             onChange={(e) => filterData(e)}
           />
-          {filteredDropdownData.length && filteredDropdownData.length > 0
-            ? filteredDropdownData.map((elem, index) => {
-                return (
-                  <DropdownSelectionContainer
-                    className="dropdownMenu__selectionContainer"
-                    key={`dropdownMenu__selectionContainer` + index}
-                    onClick={(e) => handleSelectionClick(e)}
-                  >
-                    <DropdownSelection className="drodownMenu__selection">
-                      {elem}
-                    </DropdownSelection>
-                  </DropdownSelectionContainer>
-                );
-              })
-            : "No content to display after search"}
+          {filteredDropdownData.length && filteredDropdownData.length > 0 ? (
+            filteredDropdownData.map((elem, index) => {
+              return (
+                <DropdownSelectionContainer
+                  className="dropdownMenu__selectionContainer"
+                  key={`dropdownMenu__selectionContainer` + index}
+                  onClick={(e) => handleSelectionClick(e)}
+                >
+                  <DropdownSelection className="drodownMenu__selection">
+                    {elem}
+                  </DropdownSelection>
+                </DropdownSelectionContainer>
+              );
+            })
+          ) : (
+            <NoDataErrMsg>No content to display after search</NoDataErrMsg>
+          )}
         </DropdownMenu>
       ) : (
         ""

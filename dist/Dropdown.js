@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -31,6 +31,7 @@ var DropdownMenu = _styledComponents["default"].div(_templateObject3 || (_templa
 var DropdownSelectionContainer = _styledComponents["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  padding: 1em 0em;\n  overflow: hidden;\n  display: flex;\n  align-items: center;\n  padding-left: 0.3em;\n  background-color: #242424;\n  &:hover,\n  &:focus {\n    background-color: #2d2d2d;\n  }\n"])));
 var DropdownSelection = _styledComponents["default"].p(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  margin-block-start: 0;\n  margin-block-end: 0;\n  padding-left: 15px;\n  color: white;\n"])));
 var SearchBar = _styledComponents["default"].input(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  width: 40%;\n  height: 15px;\n  position: absolute;\n  top: 0;\n  right: 0;\n  border: solid 1px #242424;\n  border-radius: 0 0px 0px 10px;\n  background-color: #babbbe;\n  color: black;\n  padding: 5px;\n  box-sizing: initial;\n"])));
+var NoDataErrMsg = _styledComponents["default"].p(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  color: white;\n"])));
 var Dropdown = function Dropdown(_ref) {
   var dropdownData = _ref.dropdownData,
     onChange = _ref.onChange,
@@ -148,7 +149,7 @@ var Dropdown = function Dropdown(_ref) {
     }, /*#__PURE__*/_react["default"].createElement(DropdownSelection, {
       className: "drodownMenu__selection"
     }, elem));
-  }) : "No content to display after search") : "");
+  }) : /*#__PURE__*/_react["default"].createElement(NoDataErrMsg, null, "No content to display after search")) : "");
 };
 var _default = Dropdown;
 exports["default"] = _default;
