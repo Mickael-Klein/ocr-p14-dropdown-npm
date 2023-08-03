@@ -50,7 +50,7 @@ export default const YourComponent = () => {
 };
 ```
 
-### Example with reset dropdown selection
+### Example with name, id and reset dropdown selection
 
 If for example, the user submit a form and you want to reset the dropdown component to its original state, you can add a state and pass the onReset props to true.
 
@@ -77,6 +77,8 @@ export default const YourComponent = () => {
                 dropdownData={arrOfStrOrNum}
                 onChange={(selection) => setSelectedItem(selection)}
                 onReset={onResetState}
+                name="dropdownExample"
+                id="dropdownExample"
             />
             <button onClick={() => setOnResetState(true)}>Reset dropdown selection</button>
         </div>
