@@ -30,12 +30,14 @@ var InputBtn = _styledComponents["default"].input(_templateObject2 || (_template
 var DropdownMenu = _styledComponents["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  max-height: 25vh;\n  box-shadow: 0px 0px 0px 1px #242424 inset;\n  border-radius: 10px;\n  position: absolute;\n  top: 30px;\n  background-color: #242424;\n  overflow: auto;\n  display: flex;\n  flex-flow: column;\n  padding-top: 20px;\n  padding-bottom: 10px;\n"])));
 var DropdownSelectionContainer = _styledComponents["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  padding: 1em 0em;\n  overflow: hidden;\n  display: flex;\n  align-items: center;\n  padding-left: 0.3em;\n  background-color: #242424;\n  &:hover,\n  &:focus {\n    background-color: #2d2d2d;\n  }\n"])));
 var DropdownSelection = _styledComponents["default"].p(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  margin-block-start: 0;\n  margin-block-end: 0;\n  padding-left: 15px;\n  color: white;\n"])));
-var SearchBar = _styledComponents["default"].input(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  width: 40%;\n  height: 15px;\n  position: absolute;\n  top: 0;\n  right: 0;\n  border: solid 1px #242424;\n  border-radius: 0 0px 0px 10px;\n  background-color: #babbbe;\n  color: black;\n  padding: 5px;\n"])));
+var SearchBar = _styledComponents["default"].input(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  width: 40%;\n  height: 15px;\n  position: absolute;\n  top: 0;\n  right: 0;\n  border: solid 1px #242424;\n  border-radius: 0 0px 0px 10px;\n  background-color: #babbbe;\n  color: black;\n  padding: 5px;\n  box-sizing: initial;\n"])));
 var Dropdown = function Dropdown(_ref) {
   var dropdownData = _ref.dropdownData,
     onChange = _ref.onChange,
     _ref$onReset = _ref.onReset,
-    onReset = _ref$onReset === void 0 ? false : _ref$onReset;
+    onReset = _ref$onReset === void 0 ? false : _ref$onReset,
+    name = _ref.name,
+    id = _ref.id;
   Dropdown.propTypes = {
     dropdownData: _propTypes["default"].arrayOf(_propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])).isRequired
   };
@@ -125,7 +127,9 @@ var Dropdown = function Dropdown(_ref) {
     value: dropdownSelection,
     onClick: function onClick() {
       toogleDropdown();
-    }
+    },
+    name: name,
+    id: id
   }), dropdownIsOpen ? /*#__PURE__*/_react["default"].createElement(DropdownMenu, {
     className: "dropdownMenu"
   }, /*#__PURE__*/_react["default"].createElement(SearchBar, {

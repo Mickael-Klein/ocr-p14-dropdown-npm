@@ -94,6 +94,10 @@ The Dropdown component takes the following props:
 
 - onReset (variable/state, optional): A boolean wich when is "true" will reset the user's selection to a default value (the first of the array of data passed).
 
+- name (variable/state, optional): a string wich will be the name of the input (for label for example)
+
+- id (variable/state, optional): a string wich will be the id of the input
+
 ### Styling
 
 The React Dropdown component is fully styled using styled-components. You can customize the styles by adding your on CSS.

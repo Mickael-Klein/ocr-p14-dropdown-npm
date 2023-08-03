@@ -68,9 +68,10 @@ const SearchBar = styled.input`
   background-color: #babbbe;
   color: black;
   padding: 5px;
+  box-sizing: initial;
 `;
 
-const Dropdown = ({ dropdownData, onChange, onReset = false }) => {
+const Dropdown = ({ dropdownData, onChange, onReset = false, name, id }) => {
   Dropdown.propTypes = {
     dropdownData: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -163,6 +164,8 @@ const Dropdown = ({ dropdownData, onChange, onReset = false }) => {
         onClick={() => {
           toogleDropdown();
         }}
+        name={name}
+        id={id}
       />
       {dropdownIsOpen ? (
         <DropdownMenu className="dropdownMenu">
