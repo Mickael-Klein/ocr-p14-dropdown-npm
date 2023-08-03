@@ -75,7 +75,15 @@ const NoDataErrMsg = styled.p`
   color: white;
 `;
 
-const Dropdown = ({ dropdownData, onChange, onReset = false, name, id }) => {
+const defaultRandomData = Math.random();
+
+const Dropdown = ({
+  dropdownData,
+  onChange,
+  onReset = false,
+  name = defaultRandomData,
+  id = defaultRandomData,
+}) => {
   Dropdown.propTypes = {
     dropdownData: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
