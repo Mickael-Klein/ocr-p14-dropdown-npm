@@ -32,13 +32,16 @@ var DropdownSelectionContainer = _styledComponents["default"].div(_templateObjec
 var DropdownSelection = _styledComponents["default"].p(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  margin-block-start: 0;\n  margin-block-end: 0;\n  padding-left: 15px;\n  color: white;\n"])));
 var SearchBar = _styledComponents["default"].input(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  width: 40%;\n  height: 15px;\n  position: absolute;\n  top: 0;\n  right: 0;\n  border: solid 1px #242424;\n  border-radius: 0 0px 0px 10px;\n  background-color: #babbbe;\n  color: black;\n  padding: 5px;\n  box-sizing: initial;\n"])));
 var NoDataErrMsg = _styledComponents["default"].p(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  color: white;\n"])));
+var defaultRandomData = Math.random();
 var Dropdown = function Dropdown(_ref) {
   var dropdownData = _ref.dropdownData,
     onChange = _ref.onChange,
     _ref$onReset = _ref.onReset,
     onReset = _ref$onReset === void 0 ? false : _ref$onReset,
-    name = _ref.name,
-    id = _ref.id;
+    _ref$name = _ref.name,
+    name = _ref$name === void 0 ? defaultRandomData : _ref$name,
+    _ref$id = _ref.id,
+    id = _ref$id === void 0 ? defaultRandomData : _ref$id;
   Dropdown.propTypes = {
     dropdownData: _propTypes["default"].arrayOf(_propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])).isRequired
   };
